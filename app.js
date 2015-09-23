@@ -33,6 +33,21 @@ module.exports = server;
 /* ----------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------- */
 
+app.get('/sum', function(req, res){
+  res.render('math/sum', {sum: null, numbers: []});
+});
+
+app.post('/sum', function(req, res){
+  var numbers = req.body.numbers;
+  numbers = numbers.split(',');
+  var sum = 0;
+  for(var i = 0; i < numbers.length; i++){
+    sum += (numbers[i] * 1);
+  }
+  console.log('sum', sum);
+  res.render('math/sum', {sum: sum, numbers: numbers});
+});
+
 app.get('/distance', function(req, res){
   res.render('math/distance', {p1: {}, p2: {}, distance: null});
 });

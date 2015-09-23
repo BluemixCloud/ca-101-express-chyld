@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sum</title>
+  </head>
+  <body>
+    <h1>Sum</h1>
+    <h3>Nav Bar</h3>
+    <ul>
+      <li><a href="/">Home</a></li>
+    </ul>
+
+    <form method="post" action="/sum">
+      <input type="text" name="numbers" />
+      <button>Submit</button>
+    </form>
+
+    <input type="text" value="<%= sum %>" />
+
+    <ul>
+      <% for(var i = 0; i < numbers.length; i++) { %>
+        <li><%= numbers[i] %></li>
+      <% } %>
+    </ul>
+  
+  </body>
+</html>
