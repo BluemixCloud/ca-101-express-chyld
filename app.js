@@ -33,6 +33,19 @@ module.exports = server;
 /* ----------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------- */
 
+app.get('/distance', function(req, res){
+  res.render('math/distance', {p1: {}, p2: {}, distance: null});
+});
+
+app.post('/distance', function(req, res){
+  var p1 = {x: req.body.p1x * 1, y: req.body.p1y * 1};
+  var p2 = {x: req.body.p2x * 1, y: req.body.p2y * 1};
+  var x = p1.x - p2.x;
+  var y = p1.y - p2.y;
+  var distance = Math.sqrt(x*x + y*y);
+  res.render('math/distance', {p1: p1, p2: p2, distance: distance});
+});
+
 app.get('/', function(req, res){
   res.render('home/index');
 });
@@ -42,6 +55,7 @@ app.get('/square', function(req, res){
 });
 
 app.post('/square', function(req, res){
+  console.log(req.body);
   var square = req.body.x * req.body.x;
   res.render('math/square', {square: square});
 });

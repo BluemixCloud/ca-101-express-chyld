@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Distance</title>
+  </head>
+  <body>
+    <h1>Distance</h1>
+    <h3>Nav Bar</h3>
+    <ul>
+      <li><a href="/">Home</a></li>
+    </ul>
+
+    <form method="post" action="/distance">
+      <input type="text" name="p1x" value="<%= p1.x %>" />
+      <input type="text" name="p1y" value="<%= p1.y %>" />
+      <input type="text" name="p2x" value="<%= p2.x %>" />
+      <input type="text" name="p2y" value="<%= p2.y %>" />
+      <button>Distance</button>
+      <input type="text" value="<%= distance %>" />
+    </form>
+
+  </body>
+</html>
