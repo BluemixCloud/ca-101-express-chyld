@@ -33,6 +33,16 @@ module.exports = server;
 /* ----------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------- */
 
+app.post('/yoda', function(req, res){
+  // These code snippets use an open-source library.
+  unirest.get("https://yoda.p.mashape.com/yoda?sentence=" + req.body.phrase)
+  .header("X-Mashape-Key", process.env.MASHAPE)
+  .header("Accept", "text/plain")
+  .end(function (result) {
+    res.send(result.body);
+  });
+});
+
 app.get('/sum', function(req, res){
   res.render('math/sum', {sum: null, numbers: []});
 });
