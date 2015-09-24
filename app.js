@@ -33,6 +33,22 @@ module.exports = server;
 /* ----------------------------------------------------------------------------------------- */
 /* ----------------------------------------------------------------------------------------- */
 
+app.get('/geocode', function(req, res){
+  res.render('location/geocode');
+});
+
+app.post('/geocode', function(req, res){
+  // These code snippets use an open-source library. http://unirest.io/nodejs
+  console.log('geocode', req.body);
+  unirest.get("https://montanaflynn-geocoder.p.mashape.com/reverse?latitude=" + req.body.latitude + "&longitude=" + req.body.longitude)
+  .header("X-Mashape-Key", process.env.MASHAPE)
+  .header("Accept", "application/json")
+  .end(function (result) {
+    console.log('geocode result', result.body);
+    res.send(result.body);
+  });
+});
+
 app.post('/yoda', function(req, res){
   // These code snippets use an open-source library.
   unirest.get("https://yoda.p.mashape.com/yoda?sentence=" + req.body.phrase)
